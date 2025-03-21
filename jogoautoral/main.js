@@ -259,12 +259,19 @@ class GameOver extends Phaser.Scene {
 
     preload() {
         this.load.image('gameover', './assets/gameover.png');
+        this.load.image('gameover2','./assets/gameover2.png');
+
     }
 
     create() {
         // Exibir a imagem de "Game Over"
-        let gameOverImage = this.add.image(window.innerWidth / 2, window.innerHeight / 2, 'gameover');
-        gameOverImage.setScale(0.88);
+        if (game.device.os.desktop){
+            gameOverImage =this.add.image(400,300,'gameover');
+        } else{
+            
+          gameOverImage = this.add.image(400,300,'gameover2');
+    
+        }
 
         // Criar botão "Voltar"
         let voltarButton = this.add.text(window.innerWidth / 2, window.innerHeight - 100, 'Voltar', {
